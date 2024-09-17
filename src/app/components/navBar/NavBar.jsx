@@ -1,6 +1,6 @@
-"use client"; // Ensure the component is rendered on the client side
+"use client"; 
 
-import React, { useState, useEffect } from 'react'; // Import useEffect here
+import React, { useState, useEffect } from 'react'; 
 import Link from 'next/link';
 
 const NavBar = () => {
@@ -34,14 +34,14 @@ const NavBar = () => {
 
       <nav className="flex gap-10 justify-center items-center">
         <Link
-          href="#"
+          href="/home"
           className="uppercase font-semibold text-base text-white px-5 py-1 text-xl rounded-2xl hover:bg-green transition duration-500 ease-in-out"
         >
           Home
         </Link>
 
         <Link
-          href="#"
+          href="/album"
           className="uppercase font-semibold text-base text-white px-5 py-1 text-xl rounded-2xl hover:bg-green transition duration-500 ease-in-out"
         >
           Albums
@@ -55,11 +55,28 @@ const NavBar = () => {
         </Link>
 
         <Link
-          href="#"
+          href="/about"
           className="uppercase font-semibold text-base text-white px-5 py-1 text-xl rounded-2xl hover:bg-green transition duration-500 ease-in-out"
         >
           About
         </Link>
+
+       
+        <Link
+          href="#"
+          className="uppercase font-semibold text-base text-white px-5 py-1 text-xl rounded-2xl border-2 border-green-600 hover:bg-green-600 transition duration-500 ease-in-out"
+        >
+          SignIn
+        </Link>
+
+        <div className='justify-items-end'>
+        <Link
+          href="#"
+          className="uppercase font-semibold text-base text-white px-5 py-1 text-xl rounded-2xl border-2 border-green-600 hover:bg-green-600 transition duration-500 ease-in-out"
+        >
+          Login
+        </Link>
+        </div>
       </nav>
     </header>
   );

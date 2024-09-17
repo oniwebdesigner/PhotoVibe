@@ -7,13 +7,31 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    colors: {
+      white: "#fff",
+      darkGray: "#4d4d4d",
+      green: "#00C165",
+      black: "#000",
+    },
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      transitionProperty: {
+        'colors': 'background-color, border-color, color, fill, stroke',
+        'opacity': 'opacity',
+        'transform': 'transform',
       },
+
+      
     },
   },
+  variants: {
+    extend: {
+      transitionProperty: ['responsive', 'hover', 'focus'],
+    },
+    
+  },
+
+  
   plugins: [],
 };
+
 export default config;
