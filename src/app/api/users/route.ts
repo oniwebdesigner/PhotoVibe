@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import pool from "@/hook/db";
+import bcrypt from 'bcryptjs';
 
 export async function GET() {
     try {
@@ -14,17 +15,30 @@ export async function GET() {
     }
 }
 
-// Metoda POST për të krijuar një përdorues të ri
+
 export async function POST(req: Request) {
     try {
         const { name, email, password } = await req.json();
 
-        const db = await pool.getConnection();
-        const query = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
-        const [result] = await db.execute(query, [name, email, password]);
-        db.release();
+        const hashedPassword = await bcrypt.hash(password, 10);
 
-        return NextResponse.json({ message: 'User Successfully Created', userId: result.insertId });
+        const db = await pool.getConnection();
+        const emailQuery = 'SELECT * FROM USERS where email = ?';
+        const [emailResult] = await db.execute(emailQuery,[email]);
+        if(emailResult.length > 0){
+            return NextResponse.json({'message':'User already exist!'},{status:409})
+        }
+        const query = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
+        const [result] = await db.execute(query, [name, email, hashedPassword]);
+        const userId = result.insertId;
+
+        const selectQuery = 'SELECT * FROM users WHERE id = ?';
+        const [userRows] = await db.execute(selectQuery, [userId]);
+
+        db.release();
+        if (userRows.length > 0) {
+            return NextResponse.json({ user: userRows[0] }, { status: 200 });
+        }
     } catch (error) {
         return NextResponse.json({ error: 'Error create user' }, { status: 500 });
     }
