@@ -4,15 +4,15 @@ import pool from "@/hook/db";
 
 export async function GET(
     request:  NextRequest,
-    { params }: { params: { slug: string } }
+    { params }: { params: { userId: string } }
 ) {
-    const slug = params.slug // user id
+    const id = params.userId
     
     try {
         const db = await pool.getConnection()        
         
-        const query = 'select * from account where id = ?'
-        const [rows] = await db.execute(query,[slug])
+        const query = 'select * from users where id = ?'
+        const [rows] = await db.execute(query,[id])
         db.release()
         
         return NextResponse.json(rows)
