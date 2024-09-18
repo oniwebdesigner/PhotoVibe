@@ -6,7 +6,7 @@ interface SignUpResponse {
 
 const sendData = async (formData: { name: string; email: string; password: string }) => {
   try {
-    const response = await fetch('https://backend-api-url/signup', {
+    const response = await fetch('#', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

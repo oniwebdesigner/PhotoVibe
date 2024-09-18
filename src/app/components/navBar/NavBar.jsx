@@ -11,11 +11,11 @@ const NavBar = () => {
     const currentScroll = window.pageYOffset;
     if (currentScroll > lastScrollTop && currentScroll > 50) {
       // Scrolling down
-      setShowNav(false);
+      setShowNav(false); 
     } else {
       // Scrolling up
       setShowNav(true);
-    }
+    } 
     setLastScrollTop(currentScroll <= 0 ? 0 : currentScroll);
   };
 
