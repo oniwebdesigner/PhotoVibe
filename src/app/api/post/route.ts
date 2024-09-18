@@ -1,7 +1,7 @@
 import { NextResponse,NextRequest } from "next/server";
 import { PrismaClient } from '@prisma/client';
-import formidable from 'formidable';
-import path from 'path';
+import { saveImage } from "@/lib/uploadImageService";
+import { deleteImage } from "@/lib/uploadImageService";
 
 
 const prisma = new PrismaClient();
@@ -24,7 +24,8 @@ export async function GET(){
 export async function POST(request: Request) {
     const formData = await request.formData();
     
-    const authorId = formData.get('authorId') as string;
+    const authorIdString = formData.get('authorId');
+const authorId = authorIdString ? Number(authorIdString) : undefined;
     const title = formData.get('title') as string;
     const image = formData.get('image') as File;
   
@@ -60,7 +61,27 @@ export async function POST(request: Request) {
     if (Object.keys(errors).length > 0) {
       return NextResponse.json({ success: false, errors }, { status: 400 });
     }
+
+    let imagePath: string | null = null;
+
+    try {
+      imagePath = await saveImage(image);
   
-    // If everything is fine, proceed with your logic
-    return NextResponse.json({ success: true, message: "Validation passed!" });
+      const post = await prisma.post.create({
+        data: {
+          title: title,
+          image: imagePath,
+          authorId: authorId
+        }
+      });
+  
+      return NextResponse.json({ post }, { status: 201 });
+    } catch (error) {
+      // If imagePath is not null, delete the image
+      if (imagePath) {
+        deleteImage(imagePath);
+      }
+  
+      return NextResponse.json({ success: false, message: (error as Error).message }, { status: 500 });
+    }
   }
