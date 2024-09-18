@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import NavBar from "@components/navBar/NavBar";
+import Footer from "@components/footer/Footer";
 import "./globals.css";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +31,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Vendos Navbar-in */}
+        <NavBar></NavBar>
+        
+
+        {/* Përmbajtja e faqes */}
         {children}
+
+        {/* Vendos Footer-in */}
+        
       </body>
     </html>
   );
