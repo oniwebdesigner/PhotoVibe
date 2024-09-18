@@ -1,7 +1,7 @@
 // users/Signin.tsx
 "use client";
 import { useState } from "react";
-import sendData from "app/signin/SendData";
+import sendData from "app/signUp/SendData";
 
 const Signin = () => {
   const [formData, setFormData] = useState({

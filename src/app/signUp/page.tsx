@@ -1,5 +1,5 @@
 // pages/page.tsx
-import Signin from "app/signin/Signin";
+import Signin from "app/signUp/Signin";
 
 export default function Home() {
   return (
