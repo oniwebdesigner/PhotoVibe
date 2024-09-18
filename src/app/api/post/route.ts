@@ -14,8 +14,18 @@ export const config = {
 
 export async function GET(){
     try{
-        const posts = await prisma.post.findMany
-        return NextResponse.json({posts},{status:200});
+        const postsFetch = await prisma.post.findMany({
+            include: {
+              author: true, 
+            },
+          });
+           
+    const post = postsFetch.map(post => {
+        const { authorId, ...postWithoutAuthorId } = post;
+        return postWithoutAuthorId;
+      });
+      
+        return NextResponse.json({post},{status:200});
     }catch (error) {
         return NextResponse.json({ error: 'error fetching posts' }, { status: 500 });
     }
