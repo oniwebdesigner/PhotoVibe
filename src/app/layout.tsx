@@ -4,6 +4,7 @@ import NavBar from "@components/navBar/NavBar";
 import Footer from "@components/footer/Footer";
 import "./globals.css";
 
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
       >
         {/* Vendos Navbar-in */}
         <NavBar></NavBar>
+        
 
         {/* Përmbajtja e faqes */}
         {children}

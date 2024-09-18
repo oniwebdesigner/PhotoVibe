@@ -20,7 +20,7 @@ const HeroSection = () => {
      memories. Each photograph is a window into a unique world, capturing the essence of our experiences
       and emotions. Explore our gallery and discover the stories behind every shot.
   </p>
- <a href="\album" className="bg-green text-white text-center uppercase font-semibold px-4 py-2 rounded-md inline-block hover:scale-105 mt-10">
+ <a href="\album" className="bg-green text-white text-center uppercase font-semibold px-4 py-2 rounded-md inline-block hover:scale-105 mt-10 ml-5">
   Get Started
  </a>
   </h1>
@@ -32,7 +32,7 @@ const HeroSection = () => {
     {/* Title and Description */}
     <div className="text-center mb-12">
       <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Top Photographers</h2>
-      <p className="text-lg text-center text-gray-700 mb-8 max-w-3xl mx-auto">
+      <p className="text-lg text-gray-600 max-w-2xl mx-auto">
         Our team consists of some of the most talented and renowned photographers in the industry.
         Each of them brings a unique and creative perspective, capturing the most beautiful and special moments.
         Explore some of their best work and discover the passion and creativity behind every photograph.
@@ -44,15 +44,15 @@ const HeroSection = () => {
           {/* Row 1 */}
           <div className="flex flex-col items-center">
             <Image src={background1} alt="Photo 1" width={300} height={200} className="rounded-lg shadow-lg mb-4" />
-            <p className="text-center text-lg font-semibold">Foto 1 - Përshkrim i shkurtër.</p>
+            <p className="text-center text-lg font-semibold">Photograph</p>
           </div>
           <div className="flex flex-col items-center">
             <Image src={background1} alt="Photo 2" width={300} height={200} className="rounded-lg shadow-lg mb-4" />
-            <p className="text-center text-lg font-semibold">Foto 2 - Përshkrim i shkurtër.</p>
+            <p className="text-center text-lg font-semibold">Photograph</p>
           </div>
           <div className="flex flex-col items-center">
             <Image src={background1} alt="Photo 3" width={300} height={200} className="rounded-lg shadow-lg mb-4" />
-            <p className="text-center text-lg font-semibold">Foto 3 - Përshkrim i shkurtër.</p>
+            <p className="text-center text-lg font-semibold">Photograph</p>
           </div>
         </div>
 
@@ -60,15 +60,15 @@ const HeroSection = () => {
           {/* Row 2 */}
           <div className="flex flex-col items-center">
             <Image src={background1} alt="Photo 4" width={300} height={200} className="rounded-lg shadow-lg mb-4" />
-            <p className="text-center text-lg font-semibold">Foto 4 - Përshkrim i shkurtër.</p>
+            <p className="text-center text-lg font-semibold">Photograph</p>
           </div>
           <div className="flex flex-col items-center">
             <Image src={background1} alt="Photo 5" width={300} height={200} className="rounded-lg shadow-lg mb-4" />
-            <p className="text-center text-lg font-semibold">Foto 5 - Përshkrim i shkurtër.</p>
+            <p className="text-center text-lg font-semibold">Photograph</p>
           </div>
           <div className="flex flex-col items-center">
             <Image src={background1} alt="Photo 6" width={300} height={200} className="rounded-lg shadow-lg mb-4" />
-            <p className="text-center text-lg font-semibold">Foto 6 - Përshkrim i shkurtër.</p>
+            <p className="text-center text-lg font-semibold">Photograph</p>
           </div>
         </div>
       </div>

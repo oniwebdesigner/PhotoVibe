@@ -63,7 +63,7 @@ const NavBar = () => {
 
        
         <Link
-          href="#"
+          href="/signin"
           className="uppercase font-semibold text-base text-white px-5 py-1 text-xl rounded-2xl border-2 border-green-600 hover:bg-green-600 transition duration-500 ease-in-out"
         >
           SignIn
@@ -71,7 +71,7 @@ const NavBar = () => {
 
         <div className='justify-items-end'>
         <Link
-          href="#"
+          href="/login"
           className="uppercase font-semibold text-base text-white px-5 py-1 text-xl rounded-2xl border-2 border-green-600 hover:bg-green-600 transition duration-500 ease-in-out"
         >
           Login
