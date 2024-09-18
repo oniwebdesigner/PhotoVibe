@@ -1,7 +1,7 @@
 import { request } from "http";
 import { NextRequest,NextResponse } from "next/server";
-import validateEmail from "@/helpers/validateEmail";
-import validatePassword from "@/helpers/validatePassword";
+import validateEmail from "helpers/validateEmail";
+import validatePassword from "helpers/validatePassword";
 import { PrismaClient } from '@prisma/client';
 import bcrypt from "bcryptjs";
 
