@@ -1,6 +1,6 @@
 import { NextResponse,NextRequest } from "next/server";
 import { PrismaClient } from '@prisma/client';
-import { saveImage,deleteImage } from "@/lib/uploadImageService";
+import { saveImage,deleteImage } from "lib/uploadImageService";
 
 
 const prisma = new PrismaClient();

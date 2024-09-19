@@ -1,10 +1,10 @@
 import { jwtVerify } from "jose";
 
-
-export async function validateJwt(token:string,secret:string){
+const JWT_SECRET = process.env.JWT_SECRET
+export async function validateJwt(token:string){
     try{
         //convert to Uint8Array
-        const secretKey = new TextEncoder().encode(secret);
+        const secretKey = new TextEncoder().encode(JWT_SECRET);
 
         //Verify and decode theJWT
 
