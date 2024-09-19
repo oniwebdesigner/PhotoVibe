@@ -1,13 +1,14 @@
-import React from 'react'
-import Login from './Login'
-import Background from '../signUp/SignUp.jpg';
-import { Html } from 'next/document';
+import React from "react";
+// pages/login.js
+import LoginForm from "./LoginForm";
 
-export default function page() {
-  return (
-    <div class ="bg-green">
-      
-      <Login></Login>
-    </div>
-  )
-}
+const LoginPage = () => {
+    return (
+        <div>
+            <h1>Hyr në Llogarinë Tënde</h1>
+            <LoginForm />
+        </div>
+    );
+};
+
+export default LoginPage;

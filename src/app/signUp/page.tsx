@@ -1,18 +1,13 @@
-// pages/page.tsx
-import Signin from "app/signUp/Signin";
-import Background from "../signUp/SignUp.jpg";
+// pages/signup.js
+import SignUpForm from "./SignUpForm";
 
-export default function Home() {
-  return (
-    
-    <div>
-       <Signin />
-      <div
-      //className="bg-cover bg-center h-screen text-center backdrop-opacity-10 backdrop-invert bg-white/30 opacity-80"
-      style={{ backgroundImage: `url(${Background.src})` }}>
+const SignUpPage = () => {
+    return (
+        <div>
+            <h1 className="text-center text-2xl font-bold mt-10">Regjistrohu</h1>
+            <SignUpForm />
+        </div>
+    );
+};
 
-      </div>
-     
-    </div>
-  );
-}
+export default SignUpPage;
