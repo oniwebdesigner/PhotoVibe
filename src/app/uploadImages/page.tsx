@@ -1,11 +1,11 @@
-import UploadPage from "./Upload";
+import Posts from './posts'
 
 import React from 'react'
 
 export default function page() {
   return (
     <div>
-        <UploadPage></UploadPage>
+       <Posts></Posts>
     </div>
   )
 }
