@@ -11,11 +11,11 @@ const NavBar = () => {
     const currentScroll = window.pageYOffset;
     if (currentScroll > lastScrollTop && currentScroll > 50) {
       // Scrolling down
-      setShowNav(false);
+      setShowNav(false); 
     } else {
       // Scrolling up
       setShowNav(true);
-    }
+    } 
     setLastScrollTop(currentScroll <= 0 ? 0 : currentScroll);
   };
 
@@ -64,7 +64,7 @@ const NavBar = () => {
        
         <Link
           href="/signUp"
-          className="uppercase font-semibold text-base text-white px-5 py-1 text-xl rounded-2xl border-2 border-green-600 hover:bg-green-600 transition duration-500 ease-in-out"
+          className="uppercase font-semibold text-base text-white bg-green px-5 py-1 text-xl rounded-2xl border-2 border-green-600 hover:bg-green-600 transition duration-500 ease-in-out"
         >
           SignIn
         </Link>
