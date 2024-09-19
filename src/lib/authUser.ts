@@ -3,7 +3,7 @@ import { NextRequest} from 'next/server';
 
 const JWT_SECRET = process.env.JWT_SECRET as string;
 
-export async function validateJwt(req: NextRequest) {
+export async function authUser(req: NextRequest) {
     // Extract the Authorization header
     const authHeader = req.headers.get('Authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
