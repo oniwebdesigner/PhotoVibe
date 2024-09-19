@@ -1,6 +1,6 @@
 import { NextResponse,NextRequest } from "next/server";
 import { PrismaClient } from '@prisma/client';
-import { validateJwt } from "lib/validateJwt";
+import { validateJwt } from "lib/authUser";
 
 const prisma = new PrismaClient();
 
