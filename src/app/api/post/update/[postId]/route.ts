@@ -18,17 +18,23 @@ export async function PUT(req:NextRequest,{params}:{params:{postId:string}}) {
         return NextResponse.json({'message':'Unauthorizate'},{status:401})
     }
 
+    
     //check if the post exist
     const postExist = await prisma.post.findUnique({
         where: { id: postId },
-    }) as {image: string} | null;
+    }) as {image: string,authorId:number} | null;
 
     if(!postExist){
         return NextResponse.json({'message':'Post Not Found'},{status:404});
     }
 
-
     const authenticatedUser = user;
+
+    //check if the authenticate user is the author of the post
+    if (postExist.authorId !== authenticatedUser.id){
+        return NextResponse.json({'message':'Unauthorized to update this post'},{status:403});
+    }
+
     
     const title = formData.get('title') as string;
     const image = formData.get('image') as File;
@@ -71,6 +77,7 @@ export async function PUT(req:NextRequest,{params}:{params:{postId:string}}) {
         data: {
           title: title,
           image: imagePath,
+          authorId: 6
         },
       });
   
