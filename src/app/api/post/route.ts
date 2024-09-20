@@ -31,11 +31,11 @@ export async function GET(){
     }
 }
 
-export async function POST(request: NextRequest) {
-    const formData = await request.formData();
+export async function POST(req:NextRequest) {
+    const formData = await req.formData();
 
     //pass the req into function for validate the header token and return user payload
-    const {valid,user} = await authUser(request);
+    const {valid,user} = await authUser(req);
 
     if(!valid || !user){
         return NextResponse.json({'message':'Unauthorizate'},{status:401})
