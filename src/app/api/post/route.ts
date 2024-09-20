@@ -27,7 +27,7 @@ export async function GET(){
       
         return NextResponse.json({post},{status:200});
     }catch (error) {
-        return NextResponse.json({ error: 'error fetching posts' }, { status: 500 });
+        return NextResponse.json({'message': 'error fetching posts' }, { status: 500 });
     }
 }
 
@@ -82,7 +82,7 @@ export async function POST(req:NextRequest) {
         data: {
           title: title,
           image: imagePath,
-          authorId: authenticatedUser.id as number
+          authorId: parseInt(authenticatedUser.id)
         }
       });
   
@@ -93,6 +93,6 @@ export async function POST(req:NextRequest) {
         deleteImage(imagePath);
       }
   
-      return NextResponse.json({ success: false, message: (error as Error).message }, { status: 500 });
+      return NextResponse.json({ 'message': error.message}, { status: 500 });
     }
   }
