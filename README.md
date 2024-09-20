@@ -27,9 +27,28 @@ Installation
 ```bash
 git clone https://github.com/almant12/photostudio1.git
 cd photostudio1
-```bash
+```
 
 2. Install the dependencies:
+```bash
+npm install
+```
+
+3. Copy .env.example file to .env to config your database and store the unique JWT_SECRET key
+```bash
+cp .env.example .env
+```
+
+4. Run the database migrations
+```bash
+npx prisma migrate dev --name init
+```
+
+5. Start the development server, run:
+```bash
+npm run dev
+```
+
 
 
 
