@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## PhotoStudio
+
+PhotoStudio is a web application build with Next.js that allows photographers to showcase their profesional images. The app provides user authentication via JWT, allowing user to signup login and manage their profile. Authenticated users can upload their professional images to be displayed publicly.
+
+## Features
+
+- Prisma: Easy way to defind your table in database
+- Next.js: Fullstack framework used for both frontend and API.
+- User Authentication: Secure login and signup system using JWT (JSON WEB TOKEN).
+- Image Management: Authenticated users can upload and display thei professional images.
+- Middleware: Secure authorization routes.
+
+## Technologies Used
+
+- Next.js: React framework for server-side rendering and API integration.
+- Prisma: Provide tools to interact easly with your database
+- JWT (JSON Web Tokens): Used for secure user authentication.
+- MySQL: Database for storing user and image data.
+- TypeScript: Ensures type safety across the project.
+- bcryptjs: Password hashing for secure login.
+- jose: A framework for signing and encrypting JSON-based data structures, commonly used for handling secure token-based authentication, such as JWT (JSON Web Token).
 
 ## Getting Started
-
-First, run the development server:
-
+Installation
+1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/almant12/photostudio.git
+cd photostudio
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install the dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Copy .env.example file to .env to config your database and store the unique JWT_SECRET key
+```bash
+cp .env.example .env
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Run the database migrations
+```bash
+npx prisma migrate dev --name init
+```
 
-## Learn More
+5. Start the development server, run:
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
