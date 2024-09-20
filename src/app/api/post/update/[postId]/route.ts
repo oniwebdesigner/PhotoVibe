@@ -19,9 +19,10 @@ export async function PUT(req:NextRequest,{params}:{params:{postId:string}}) {
     }
 
     //check if the post exist
-    const postExist = prisma.post.findUnique({
-        where: { id: postId }
-    });
+    const postExist = await prisma.post.findUnique({
+        where: { id: postId },
+    }) as {image: string} | null;
+
     if(!postExist){
         return NextResponse.json({'message':'Post Not Found'},{status:404});
     }
