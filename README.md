@@ -23,12 +23,16 @@ PhotoStudio is a web application build with Next.js that allows photographers to
 
 ## Getting Started
 Installation
-## CLI Commands
-
-### 1. Install Dependencies
-To install all required dependencies using npm:
-
+1. Clone the repository
 ```bash
-npm install
+git clone https://github.com/almant12/photostudio1.git
+cd photostudio1
+```bash
+
+2. Install the dependencies:
+
+
+
+
 
 
