@@ -20,3 +20,11 @@ PhotoStudio is a web application build with Next.js that allows photographers to
 - TypeScript: Ensures type safety across the project.
 - bcryptjs: Password hashing for secure login.
 - jose: A framework for signing and encrypting JSON-based data structures, commonly used for handling secure token-based authentication, such as JWT (JSON Web Token).
+
+## Getting Started
+Installation
+
+1. Clone the repository
+git clone https://github.com/yourusername/photostudio.git
+cd photostudio
+
