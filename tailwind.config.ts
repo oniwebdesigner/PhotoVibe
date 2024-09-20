@@ -12,6 +12,7 @@ const config: Config = {
       darkGray: "#4d4d4d",
       green: "#00C165",
       black: "#000",
+      blue :'#1E40AF',
     },
     extend: {
       transitionProperty: {
