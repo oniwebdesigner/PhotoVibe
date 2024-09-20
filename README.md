@@ -1,8 +1,7 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## PhotoStudio
 
-First, run the development server:
+PhotoStudio is a web application build with Next.js that allows photographers to showcase their profesional images. The app provides user authentication via JWT, allowing user to signup login and manage their profile. Authenticated users can upload their professional images to be displayed publicly.
 
 ```bash
 npm run dev
