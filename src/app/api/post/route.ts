@@ -1,6 +1,7 @@
 import { NextResponse,NextRequest } from "next/server";
 import { PrismaClient } from '@prisma/client';
 import { saveImage,deleteImage } from "lib/uploadImageService";
+import { authUser } from "lib/authUser";
 
 
 const prisma = new PrismaClient();
@@ -30,11 +31,18 @@ export async function GET(){
     }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
     const formData = await request.formData();
+
+    //pass the req into function for validate the header token and return user payload
+    const {valid,user} = await authUser(request);
+
+    if(!valid || !user){
+        return NextResponse.json({'message':'Unauthorizate'},{status:401})
+    }
+
+    const authenticatedUser = user;
     
-    const authorIdString = formData.get('authorId');
-const authorId = authorIdString ? Number(authorIdString) : undefined;
     const title = formData.get('title') as string;
     const image = formData.get('image') as File;
   
@@ -50,12 +58,6 @@ const authorId = authorIdString ? Number(authorIdString) : undefined;
       errors.title = "Title must not exceed 255 characters.";
     }
   
-    // Validate authorId (check if it's a number)
-    if (!authorId) {
-      errors.authorId = "Author is required.";
-    } else if (isNaN(Number(authorId))) {
-      errors.authorId = "Author ID must be a valid number.";
-    }
   
     // Validate image
     if (!image) {
@@ -80,7 +82,7 @@ const authorId = authorIdString ? Number(authorIdString) : undefined;
         data: {
           title: title,
           image: imagePath,
-          authorId: authorId
+          authorId: authenticatedUser.id as number
         }
       });
   
