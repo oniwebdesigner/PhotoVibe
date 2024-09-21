@@ -18,7 +18,9 @@ export async function PUT(req:NextRequest,{params}:{params:{postId:string}}) {
         return NextResponse.json({'message':'Unauthorizate'},{status:401})
     }
 
-    
+    const authenticatedUser = user;
+
+  
     //check if the post exist
     const postExist = await prisma.post.findUnique({
         where: { id: postId },
@@ -28,10 +30,9 @@ export async function PUT(req:NextRequest,{params}:{params:{postId:string}}) {
         return NextResponse.json({'message':'Post Not Found'},{status:404});
     }
 
-    const authenticatedUser = user;
 
     //check if the authenticate user is the author of the post
-    if (postExist.authorId !== authenticatedUser.id){
+    if (postExist.authorId !== parseInt(authenticatedUser.id)){
         return NextResponse.json({'message':'Unauthorized to update this post'},{status:403});
     }
 
@@ -57,8 +58,8 @@ export async function PUT(req:NextRequest,{params}:{params:{postId:string}}) {
       errors.image = "Image is required.";
     } else if (!['image/jpeg', 'image/png', 'image/gif'].includes(image.type)) {
       errors.image = "Invalid image type. Only JPEG, PNG, and GIF are allowed.";
-    } else if (image.size > 2 * 1024 * 1024) {  // Max 2MB file size
-      errors.image = "Image size must be less than 2MB.";
+    } else if (image.size > 5 * 1024 * 1024) {  // Max 2MB file size
+      errors.image = "Image size must be less than 5MB.";
     }
   
     // If there are any validation errors, return them
@@ -77,13 +78,13 @@ export async function PUT(req:NextRequest,{params}:{params:{postId:string}}) {
         data: {
           title: title,
           image: imagePath,
-          authorId: 6
+          authorId: postExist.authorId
         },
       });
   
       return NextResponse.json({ updatedPost }, { status: 201 });
     } catch (error) {
-      // If imagePath is not null, delete the image
+      //once the post does not update delete the new upload image
       if (imagePath) {
         deleteImage(imagePath);
       }
