@@ -6,13 +6,35 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  
   theme: {
     colors: {
       white: "#fff",
       darkGray: "#4d4d4d",
-      green: "#00C165",
+      green: {
+        500: "#00C165",
+        600:'#16a34a',
+      },
+      red: {
+        500: "#ef4444",
+      },
       black: "#000",
-      blue :'#1E40AF',
+      blue: {
+        500: '#3b82f6',
+        600: '#2563eb',
+        700: '#1d4ed8',
+      },
+      gray: {
+        100: '#f3f4f6',
+        300: '#d1d5db',
+        600: '#4b5563',
+        700: '#374151',
+        900: '#111827',
+      },
+      indigo: {
+        600: "#4f46e5",
+        700: "#4338ca", 
+      },
     },
     extend: {
       transitionProperty: {
@@ -20,18 +42,13 @@ const config: Config = {
         'opacity': 'opacity',
         'transform': 'transform',
       },
-
-      
     },
   },
   variants: {
     extend: {
       transitionProperty: ['responsive', 'hover', 'focus'],
     },
-    
   },
-
-  
   plugins: [],
 };
 

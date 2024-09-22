@@ -5,7 +5,6 @@ import LoginForm from "./LoginForm";
 const LoginPage = () => {
     return (
         <div>
-            <h1>Hyr në Llogarinë Tënde</h1>
             <LoginForm />
         </div>
     );
