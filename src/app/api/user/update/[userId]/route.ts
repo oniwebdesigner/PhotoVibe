@@ -67,7 +67,7 @@ export async function PUT(req:NextRequest,{params}:{params:{userId:string}}){
 
 
       try{
-        avatarPath = await updateImage(avatar,userExist.avatar);
+        avatarPath = await updateImage(avatar,userExist.avatar || '');
 
         //update the user
         const updateUser = await prisma.user.update({
