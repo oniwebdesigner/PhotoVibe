@@ -1,11 +1,15 @@
-import Posts from './posts'
+import Posts from './posts';
+import CreatePost from './CreatePost';
 
-import React from 'react'
-
-export default function page() {
+const PostPage = () => {
   return (
-    <div>
-       <Posts></Posts>
+    <div className="container mx-auto py-12">
+      <CreatePost />
+      <div className="mt-12">
+        <Posts />
+      </div>
     </div>
-  )
-}
+  );
+};
+
+export default PostPage;

@@ -1,128 +1,40 @@
-"use client";
-import { useEffect, useState } from "react";
+'use client';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-//data 
-type Post = {
-  id: number;
-  title: string;
-  author: {
-    id: number;
-    name: string;
-  };
-  image: string;
-};
-
-export default function Posts() {
-  const [posts, setPosts] = useState<Post[]>([]); //posts
-  const [title, setTitle] = useState("");
-  const [authorId, setAuthorId] = useState("");
-  const [image, setImage] = useState<File | null>(null);
-  const [errors, setErrors] = useState<any>({});
-  const [isLoading, setIsLoading] = useState(false);
+const PostsList = () => {
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    // Fetch the posts
-    fetch("/api/posts")
-      .then((res) => res.json())
-      .then((data) => {
-        setPosts(data.post); 
-      })
-      .catch((err) => console.error("Error fetching posts:", err));
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/post');
+        setPosts(response.data.post);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      }
+    };
+
+    fetchPosts();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    setIsLoading(true);
-    setErrors({});
-
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("authorId", authorId);
-    if (image) {
-      formData.append("image", image);
-    }
-
-    try {
-      const response = await fetch("/api/posts", {
-        method: "POST",
-        body: formData,
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setPosts([data.post, ...posts]);
-        setTitle("");
-        setAuthorId("");
-        setImage(null);
-      } else {
-        setErrors(data.errors || { message: "An error occurred." });
-      }
-    } catch (error) {
-      console.error("Error creating post:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-black p-8 rounded shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-4 text-center">Create a Post</h1>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label htmlFor="title" className="block text-sm font-medium">
-              Title
-            </label>
-            <input
-              type="text"
-              id="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="border border-gray-300 p-2 w-full rounded"
-            />
-            {errors.title && <p className="text-red-500 text-sm">{errors.title}</p>}
+    <div>
+      <h1 className="text-3xl font-semibold">Posts</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        {posts.map(post => (
+          <div key={post.id} className="border p-4 rounded-md">
+            <img src={post.image} alt={post.title} className="w-full h-40 object-cover rounded-md" />
+            <h2 className="text-xl font-semibold mt-4">{post.title}</h2>
+            <div className="mt-2">
+              <img src={post.author.avatar} alt={post.author.name} className="w-8 h-8 rounded-full inline-block mr-2" />
+              <span>{post.author.name}</span>
+            </div>
           </div>
-
-          <div>
-            <label htmlFor="authorId" className="block text-sm font-medium">
-              Author ID
-            </label>
-            <input
-              type="text"
-              id="authorId"
-              value={authorId}
-              onChange={(e) => setAuthorId(e.target.value)}
-              className="border border-gray-300 p-2 w-full rounded"
-            />
-            {errors.authorId && <p className="text-red-500 text-sm">{errors.authorId}</p>}
-          </div>
-
-          <div>
-            <label htmlFor="image" className="block text-sm font-medium">
-              Image
-            </label>
-            <input
-              type="file"
-              id="image"
-              accept="image/*"
-              onChange={(e) => setImage(e.target.files?.[0] || null)}
-              className="border border-gray-300 p-2 w-full rounded"
-            />
-            {errors.image && <p className="text-red-500 text-sm">{errors.image}</p>}
-          </div>
-
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-4 py-2 w-full rounded"
-            disabled={isLoading}
-          >
-            {isLoading ? "Creating..." : "Create Post"}
-          </button>
-        </form>
+        ))}
       </div>
     </div>
   );
-}
+};
+
+export default PostsList;

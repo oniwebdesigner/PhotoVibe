@@ -1,25 +1,20 @@
-// components/HeroSection.tsx
 "use client"; 
 
 import { useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import Background from '../image/background1.jpg';
-import background1 from '../image/background1.jpg';
-import Footer from "@components/footer/Footer";
-import { scrollAnimation } from "../heroSection/scrollAnimation"; // Importo animacionin
+import { scrollAnimation } from "../heroSection/scrollAnimation"; 
 
 const HeroSection = () => {
 
   useEffect(() => {
-    scrollAnimation(); // Thirr funksionin e animacionit kur komponenti montohet
+    scrollAnimation(); 
   }, []);
 
   return (
     <>
-      <div className="bg-cover bg-center h-screen text-center
-        backdrop-opacity-10 backdrop-invert bg-white/30 opacity-80 linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%)" 
-        style={{ backgroundImage: `url(${Background.src})` }} >
+      <div className="bg-cover bg-center h-screen text-center"
+        style={{ backgroundImage: `url(${Background.src})` }}> {/* Përdor `` për string të tipit template */}
         
         <div className="flex justify-start items-center h-screen left-10">
           <h1 className="text-4xl font-bold text-center text-white ml-10 content-to-animate">
@@ -35,53 +30,20 @@ const HeroSection = () => {
           </h1>
         </div>
 
-        <section className="bg-darkGray py-16 bg-gray-100 content-to-animate">
-          <div className="container mx-auto px-4">
-            {/* Title and Description */}
-            <div className="text-center mb-12 content-to-animate">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4 text-black">Our Top Photographers</h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Our team consists of some of the most talented and renowned photographers in the industry.
-                Each of them brings a unique and creative perspective, capturing the most beautiful and special moments.
-                Explore some of their best work and discover the passion and creativity behind every photograph.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Row 1 */}
-              <div className="flex flex-col items-center content-to-animate">
-                <Image src={background1} alt="Photo 1" width={300} height={200} className="rounded-lg shadow-lg mb-4" />
-                <p className="text-center text-lg font-semibold">Photograph</p>
-              </div>
-              <div className="flex flex-col items-center content-to-animate">
-                <Image src={background1} alt="Photo 2" width={300} height={200} className="rounded-lg shadow-lg mb-4" />
-                <p className="text-center text-lg font-semibold">Photograph</p>
-              </div>
-              <div className="flex flex-col items-center content-to-animate">
-                <Image src={background1} alt="Photo 3" width={300} height={200} className="rounded-lg shadow-lg mb-4" />
-                <p className="text-center text-lg font-semibold">Photograph</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 content-to-animate">
-              {/* Row 2 */}
-              <div className="flex flex-col items-center">
-                <Image src={background1} alt="Photo 4" width={300} height={200} className="rounded-lg shadow-lg mb-4" />
-                <p className="text-center text-lg font-semibold">Photograph</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <Image src={background1} alt="Photo 5" width={300} height={200} className="rounded-lg shadow-lg mb-4" />
-                <p className="text-center text-lg font-semibold">Photograph</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <Image src={background1} alt="Photo 6" width={300} height={200} className="rounded-lg shadow-lg mb-4" />
-                <p className="text-center text-lg font-semibold">Photograph</p>
-              </div>
-            </div>
+        <section className="bg-gray-100 py-16">
+          <div className="container mx-auto px-4 text-center mb-12">
+            <h2 className="text-3xl font-bold text-black mb-4">Our Top Photographers</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Our team consists of some of the most talented and renowned photographers in the industry.
+              Each of them brings a unique and creative perspective, capturing the most beautiful and special moments.
+              Explore some of their best work and discover the passion and creativity behind every photograph.
+            </p>
           </div>
+
+          
         </section>
 
-        <Footer />
+        
       </div>
     </>
   );

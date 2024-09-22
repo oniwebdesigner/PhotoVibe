@@ -17,7 +17,7 @@ const Background: React.FC = () => {
             Welcome to Photo Vibe, where we celebrate the art of photography through our lens. At Photo Vibe, we believe that every photograph tells a unique story, 
             capturing moments that words alone cannot express. Our passion is to immortalize fleeting moments and transform them into timeless memories.
             </p>
-            <a href="/album/Text.tsx" className="bg-green text-white uppercase font-semibold px-4 py-2 rounded-md inline-block hover:scale-105">
+            <a href="/album/Text.tsx" className="bg-green-600 text-white uppercase font-semibold px-4 py-2 rounded-md inline-block hover:scale-105">
               See More
             </a>
           </div>

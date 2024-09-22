@@ -1,4 +1,3 @@
-// components/LoginForm.js
 'use client';
 
 import { useState } from 'react';
@@ -7,11 +6,12 @@ const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [token, setToken] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
     const handleClick = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError('');
+        setSuccessMessage('');
 
         try {
             const res = await fetch('/api/login', {
@@ -25,7 +25,11 @@ const LoginForm = () => {
             const data = await res.json();
 
             if (res.ok) {
-                setToken(data.token);
+                // save token
+                sessionStorage.setItem('token', data.token);
+                setSuccessMessage('Login successful!');
+                //Dashboard
+                window.location.href = '/dashboard'; // URL
             } else {
                 setError(data.message);
             }
@@ -89,7 +93,7 @@ const LoginForm = () => {
                             <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Sign in</button>
                         </div>
                         {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
-                        {token && <p className="text-green-500 mt-4 text-center">Login successful!</p>}
+                        {successMessage && <p className="text-green-500 mt-4 text-center">{successMessage}</p>}
                     </form>
                 </div>
             </div>

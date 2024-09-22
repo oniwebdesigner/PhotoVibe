@@ -1,5 +1,6 @@
-'use client';
+"use client"; 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const SignUpForm = () => {
     const [name, setName] = useState('');
@@ -7,28 +8,46 @@ const SignUpForm = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const router = useRouter(); // Inicializo router-in
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError('');
         setSuccessMessage('');
 
-        const res = await fetch('/api/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ name, email, password }),
-        });
+        // Validimi bazik për fusha të kërkuara
+        if (!name || !email || !password) {
+            setError('All fields are required.');
+            return;
+        }
 
-        const data = await res.json();
+        try {
+            const res = await fetch('/api/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, password }), 
+            });
 
-        if (res.ok) {
-            setSuccessMessage('Registration was successful!');
-            setError('');
-        } else {
-            setError(data.message || 'An error occurred!');
-            setSuccessMessage('');
+            const data = await res.json();
+            console.log('Response data:', data); 
+
+            if (res.ok) {
+                setSuccessMessage('Registration was successful!');
+                setError('');
+                
+               
+                setTimeout(() => {
+                    router.push('/login');
+                }, 2000);
+            } else {
+                setError(data.message || 'An error occurred!');
+                setSuccessMessage('');
+            }
+        } catch (err) {
+            setError('An error occurred! Please try again later.');
+            console.error('Error:', err);
         }
     };
 
@@ -39,7 +58,7 @@ const SignUpForm = () => {
                 <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Create your account</h2>
                 <p className="mt-2 text-center text-sm text-gray-600">
                     Already registered? 
-                    <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"> Sign in</a>
+                    <a href="/login" className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"> Sign in</a>
                 </p>
             </div>
 
