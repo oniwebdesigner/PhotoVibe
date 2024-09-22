@@ -5,12 +5,12 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export const scrollAnimation = () => {
-  // Animo secilën pjesë të përmbajtjes që vjen nga poshtë-lart
+  
   gsap.utils.toArray('.content-to-animate').forEach((element: any) => {
     gsap.fromTo(element, 
       {
         opacity: 0,
-        y: 100, // Fillo nga poshtë
+        y: 100, 
       },
       {
         opacity: 1,
