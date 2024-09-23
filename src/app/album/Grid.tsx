@@ -71,7 +71,9 @@ const Grid: React.FC = () => {
   };
 
   return (
+    
     <div>
+      <section id='section1'>
       <div className="bg-black grid md:grid-cols-3 grid-cols-1 w-full gap-4 pb-16">
         {imageUrls.map((url, index) => (
           <div
@@ -102,6 +104,7 @@ const Grid: React.FC = () => {
         onNext={nextImage}
         onPrev={prevImage}
       />
+      </section>
     </div>
   );
 };

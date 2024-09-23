@@ -2,12 +2,12 @@
 
 import React, { useState, useEffect } from 'react'; 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation'; // Importo usePathname për të marrë rrugën aktuale
+import { usePathname } from 'next/navigation'; 
 
 const NavBar = () => {
   const [showNav, setShowNav] = useState(true);
   const [lastScrollTop, setLastScrollTop] = useState(0);
-  const pathname = usePathname(); // Merr rrugën aktuale
+  const pathname = usePathname(); 
 
   // Funksioni për të kontrolluar scroll-in
   const handleScroll = () => {

@@ -1,9 +1,23 @@
 // components/Background.tsx
+"use client";
+
 import React from 'react';
-import Link from 'next/link';
 import BackgroundImage from '../album/album.jpg';
+import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const Background: React.FC = () => {
+  const handleSeeMoreClick = (e: React.MouseEvent) => {
+    e.preventDefault(); 
+
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: { y: "#section1", offsetY: 70 },
+    });
+  };
+
   return (
     <div
       className="bg-cover bg-center h-screen text-center backdrop-opacity-10 backdrop-invert bg-white/30 opacity-80"
@@ -19,9 +33,12 @@ const Background: React.FC = () => {
             memories. Each photograph is a window into a unique world, capturing the essence of our experiences
             and emotions. Explore our gallery and discover the stories behind every shot.
           </p>
-          <a href="/album/Grid" className="bg-green-600 text-white uppercase font-semibold px-4 py-2 rounded-md inline-block hover:scale-105">
+          <button id='#section1'
+            onClick={handleSeeMoreClick}
+            className="bg-green-600 text-white uppercase font-semibold px-4 py-2 rounded-md inline-block hover:scale-105"
+          >
             See More
-          </a>
+          </button>
         </div>
       </div>
     </div>

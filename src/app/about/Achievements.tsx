@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 const Achievements = () => {
   return (
+    <section id='section2'>
     <section className="container mx-auto px-8 py-8 lg:py-40 text-center">
       <h2 className="block antialiased tracking-normal font-sans text-4xl font-semibold leading-[1.3] text-blue-gray-900 !text-3xl !leading-snug lg:!text-4xl">Latest Achievements</h2>
       <p className="block antialiased font-sans text-xl font-normal leading-relaxed text-inherit mt-9 w-full font-normal !text-gray-500 lg:w-5/12 mx-auto">
@@ -40,6 +41,7 @@ const Achievements = () => {
           </div>
         </div>
       </div>
+    </section>
     </section>
   );
 };
