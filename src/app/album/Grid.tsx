@@ -1,8 +1,7 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import gsap from 'gsap';
-import ImageModal from './ImageModal';
 
 const Grid: React.FC = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -14,19 +13,7 @@ const Grid: React.FC = () => {
     "https://madebydesignesia.com/themes/photix/images/album/1.jpg",
     "https://madebydesignesia.com/themes/photix/images/album/2.jpg",
     "https://madebydesignesia.com/themes/photix/images/album/3.jpg",
-    "https://madebydesignesia.com/themes/photix/images/album/3.jpg",
-  ];
-
-  const imageCaptions = [
-    "Beautiful Sunset",
-    "Mountain Range",
-    "Calm Beach",
-    "Lush Forest",
-    "City Lights",
-    "Desert Dunes",
-    "Crystal Clear Lake",
-    "Misty Morning",
-    "Starry Night"
+    "https://madebydesignesia.com/themes/photix/images/album/4.jpg",
   ];
 
   const openModal = (index: number) => {
@@ -46,65 +33,67 @@ const Grid: React.FC = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex - 1 + imageUrls.length) % imageUrls.length);
   };
 
-  useEffect(() => {
-    imageUrls.forEach((_, index) => {
-      gsap.fromTo(
-        `.text-overlay-${index}`,
-        { y: '100%', opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          ease: 'power1.inOut',
-          paused: true,
-        }
-      );
-    });
-  }, [imageUrls]);
-
-  const handleMouseEnter = (index: number) => {
-    gsap.to(`.text-overlay-${index}`, { y: 0, opacity: 1, duration: 0.5 });
-  };
-
-  const handleMouseLeave = (index: number) => {
-    gsap.to(`.text-overlay-${index}`, { y: '100%', opacity: 0, duration: 0.5 });
-  };
-
   return (
-    
     <div>
-      <section id='section1'>
-      <div className="bg-black grid md:grid-cols-3 grid-cols-1 w-full gap-4 pb-16">
-        {imageUrls.map((url, index) => (
-          <div
-            className="relative px-[6%] py-[4%] grid-item overflow-hidden"
-            key={index}
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={() => handleMouseLeave(index)}
-          >
-            <img
-              src={url}
-              className="shadow-lg rounded-md transition-transform duration-300 hover:scale-105 cursor-pointer"
-              alt={`picsum ${index + 1}`}
-              onClick={() => openModal(index)}
-            />
+      <section id='section1' className="relative w-full overflow-hidden">
+        <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${currentImageIndex * (100 / 3)}%)` }}>
+          {imageUrls.concat(imageUrls).map((url, index) => (
             <div
-              className={`absolute inset-0 flex items-center justify-center text-overlay-${index} text-white text-2xl opacity-0 pointer-events-none`}
+              className={`relative flex-shrink-0 w-1/3 transition-transform duration-300 ${
+                index === currentImageIndex ? 'scale-125 translate-y-0' : 'scale-75 translate-y-6' // Ndrysho translate-y për të ulur imazhet anash
+              }`}
+              key={index}
             >
-              {imageCaptions[index]}
+              <img
+                src={url}
+                className="shadow-lg rounded-md cursor-pointer"
+                alt={`Image ${index + 1}`}
+                onClick={() => openModal(index % imageUrls.length)} // Siguro që të marrë indeksin e duhur
+              />
             </div>
-          </div>
-        ))}
-      </div>
-
-      <ImageModal
-        isOpen={isModalOpen}
-        imageUrl={imageUrls[currentImageIndex]}
-        onClose={closeModal}
-        onNext={nextImage}
-        onPrev={prevImage}
-      />
+          ))}
+        </div>
+        <button
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+          onClick={prevImage}
+        >
+          &lt;
+        </button>
+        <button
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+          onClick={nextImage}
+        >
+          &gt;
+        </button>
       </section>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80">
+          <img
+            src={imageUrls[currentImageIndex]}
+            className="w-full h-full object-cover"
+            alt={`Full Image ${currentImageIndex + 1}`}
+          />
+          <button
+            className="absolute top-5 right-5 text-white bg-red-500 p-2 rounded-full"
+            onClick={closeModal}
+          >
+            &times;
+          </button>
+          <button
+            className="absolute left-5 top-1/2 transform -translate-y-1/2 text-white"
+            onClick={prevImage}
+          >
+            &lt;
+          </button>
+          <button
+            className="absolute right-5 top-1/2 transform -translate-y-1/2 text-white"
+            onClick={nextImage}
+          >
+            &gt;
+          </button>
+        </div>
+      )}
     </div>
   );
 };

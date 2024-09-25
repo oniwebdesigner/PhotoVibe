@@ -39,31 +39,42 @@ const HeroSection = () => {
         position: "absolute",
         top: e.clientY + "px",
         left: e.clientX + "px",
-        width: "50px",
-        height: "50px",
-        opacity: 0,
+        width: "20px", // Set the width of the shape
+        height: "20px", // Set the height of the shape
+        opacity: 0, // Start with zero opacity
         backgroundColor: `rgba(${Math.floor(Math.random() * 255)}, 
                                 ${Math.floor(Math.random() * 255)}, 
-                                ${Math.floor(Math.random() * 255)}, 0.8)`,
-        borderRadius: shape === "circle" ? "50%" : "0",
+                                ${Math.floor(Math.random() * 255)}, 0.8)`, // Random color
+        borderRadius: shape === "circle" ? "50%" : "0", // Circle or square
         clipPath: shape === "triangle" 
-          ? "polygon(50% 0%, 0% 100%, 100% 100%)"
+          ? "polygon(50% 0%, 0% 100%, 100% 100%)" // Triangle shape
           : shape === "star"
-          ? "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)"
+          ? "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)" // Star shape
           : "none",
       });
 
       document.body.appendChild(randomShape);
       
-      // Animation for shape appearance
+      // Animation for shape appearance and movement
       gsap.to(randomShape, {
         duration: 1,
-        opacity: 1,
-        scale: 1.5,
-        ease: "elastic.out(1, 0.5)",
+        opacity: 1, // Fade in
+        scale: 1.5, // Scale up
+        y: -120, // Move upward
+        rotation: Math.random() * 360, // Random rotation
+        ease: "elastic.out(1, 0.5)", // Easing effect
         onComplete: () => {
           // Remove the shape after animation
-          randomShape.remove();
+          gsap.to(randomShape, {
+            duration: 0.5,
+            opacity: 0, // Fade out
+            scale: 0.5, // Shrink before removal
+            x: (Math.random() - 0.5) * 100, // Random horizontal movement
+            y: 50, // Move down slightly before removal
+            onComplete: () => {
+              randomShape.remove(); // Remove the shape from DOM
+            }
+          });
         }
       });
     };
@@ -76,6 +87,58 @@ const HeroSection = () => {
       title.removeEventListener("mousemove", hoverAnimation);
     };
   }, []);
+
+  // New hover effect for the upload button
+  const createShapesOnHover = (e) => {
+    const randomShape = document.createElement("div");
+    const shapes = ["circle", "star"]; // Only circle and star for the button
+    const shape = shapes[Math.floor(Math.random() * shapes.length)];
+
+    // Add class based on the shape
+    randomShape.classList.add(shape);
+
+    // Initial styling for shapes
+    gsap.set(randomShape, {
+      position: "absolute",
+      top: e.clientY + "px",
+      left: e.clientX + "px",
+      width: "15px", // Set the width of the shape
+      height: "15px", // Set the height of the shape
+      opacity: 0, // Start with zero opacity
+      backgroundColor: `rgba(${Math.floor(Math.random() * 255)}, 
+                              ${Math.floor(Math.random() * 255)}, 
+                              ${Math.floor(Math.random() * 255)}, 0.8)`, // Random color
+      borderRadius: shape === "circle" ? "50%" : "0", // Circle or square
+      clipPath: shape === "star" // Star shape
+        ? "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)"
+        : "none",
+    });
+
+    document.body.appendChild(randomShape);
+
+    // Animation for shape appearance and movement
+    gsap.to(randomShape, {
+      duration: 1,
+      opacity: 1, // Fade in
+      scale: 2, // Scale up
+      y: -90, // Move upward
+      rotation: Math.random() * 360, // Random rotation
+      ease: "elastic.out(1, 0.5)", // Easing effect
+      onComplete: () => {
+        // Remove the shape after animation
+        gsap.to(randomShape, {
+          duration: 0.5,
+          opacity: 0, // Fade out
+          scale: 0.5, // Shrink before removal
+          x: (Math.random() - 0.5) * 50, // Random horizontal movement
+          y: 30, // Move down slightly before removal
+          onComplete: () => {
+            randomShape.remove(); // Remove the shape from DOM
+          }
+        });
+      }
+    });
+  };
 
   return (
     <>
@@ -92,7 +155,11 @@ const HeroSection = () => {
               memories. Each photograph is a window into a unique world, capturing the essence of our experiences
               and emotions. Explore our gallery and discover the stories behind every shot.
             </p>
-            <a href="\uploadImages" className="bg-green-600 text-white text-center uppercase font-semibold px-4 py-2 rounded-md inline-block hover:scale-105 mt-10 ml-5 hero-content">
+            <a 
+              href="/uploadImages" 
+              className="bg-green-600 text-white text-center uppercase font-semibold px-4 py-2 rounded-md inline-block hover:scale-105 mt-10 ml-5 hero-content"
+              onMouseMove={createShapesOnHover} // Add hover effect
+            >
               Upload Here
             </a>
           </div>
@@ -108,7 +175,6 @@ const HeroSection = () => {
             </p>
           </div>
         </section>
-
       </div>
     </>
   );
