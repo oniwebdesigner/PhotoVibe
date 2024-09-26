@@ -11,6 +11,7 @@ export default function Home() {
     <div>
       <HeroSection></HeroSection> 
       <Photographs></Photographs> 
+      <Spider></Spider>
       <Footer></Footer>
       
     
