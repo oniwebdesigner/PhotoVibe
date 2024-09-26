@@ -40,6 +40,7 @@ export default function RootLayout({
 
         {/* Vendos Footer-in */}
         
+        
       </body>
     </html>
   );

@@ -60,17 +60,17 @@ const HeroSection = () => {
         duration: 1,
         opacity: 1, // Fade in
         scale: 1.5, // Scale up
-        y: -120, // Move upward
+        y: -100, // Move upward
         rotation: Math.random() * 360, // Random rotation
-        ease: "elastic.out(1, 0.5)", // Easing effect
+        ease: "power2.out", // Smooth easing effect
         onComplete: () => {
           // Remove the shape after animation
           gsap.to(randomShape, {
             duration: 0.5,
             opacity: 0, // Fade out
             scale: 0.5, // Shrink before removal
-            x: (Math.random() - 0.5) * 100, // Random horizontal movement
-            y: 50, // Move down slightly before removal
+            x: (Math.random() - 0.5) * 50, // Random horizontal movement
+            y: 30, // Move down slightly before removal
             onComplete: () => {
               randomShape.remove(); // Remove the shape from DOM
             }
@@ -120,10 +120,10 @@ const HeroSection = () => {
     gsap.to(randomShape, {
       duration: 1,
       opacity: 1, // Fade in
-      scale: 2, // Scale up
-      y: -90, // Move upward
+      scale: 1.5, // Scale up
+      y: -60, // Move upward
       rotation: Math.random() * 360, // Random rotation
-      ease: "elastic.out(1, 0.5)", // Easing effect
+      ease: "power2.out", // Smooth easing effect
       onComplete: () => {
         // Remove the shape after animation
         gsap.to(randomShape, {
@@ -131,7 +131,7 @@ const HeroSection = () => {
           opacity: 0, // Fade out
           scale: 0.5, // Shrink before removal
           x: (Math.random() - 0.5) * 50, // Random horizontal movement
-          y: 30, // Move down slightly before removal
+          y: 20, // Move down slightly before removal
           onComplete: () => {
             randomShape.remove(); // Remove the shape from DOM
           }

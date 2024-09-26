@@ -9,20 +9,24 @@ interface ImageModalProps {
 }
 
 const ImageModal: React.FC<ImageModalProps> = ({ isOpen, imageUrl, onClose, onNext, onPrev }) => {
-  if (!isOpen) return null;
+  if (!isOpen) return null; // Return null if the modal is not open
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center">
-      <div className="relative">
-        <button className="absolute top-2 right-2 text-white" onClick={onClose}>X</button>
-        <img src={imageUrl} alt="Full view" className="max-w-full max-h-screen" />
-        <div className="flex justify-between mt-4">
-          <button className="text-white" onClick={onPrev}>Back</button>
-          <button className="text-white" onClick={onNext}>Next</button>
-        </div>
+    <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
+      <div className="relative w-screen h-screen flex justify-center items-center">
+        <button onClick={onClose} className="absolute top-4 right-4 text-white text-3xl">✖</button>
+        <img
+          src={imageUrl}
+          className="max-w-full max-h-full object-contain"
+          alt="Modal"
+          width={1000}
+          height={1000}
+        />
+        <button onClick={onPrev} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl">❮</button>
+        <button onClick={onNext} className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-3xl">❯</button>
       </div>
     </div>
   );
-}
+};
 
 export default ImageModal;
