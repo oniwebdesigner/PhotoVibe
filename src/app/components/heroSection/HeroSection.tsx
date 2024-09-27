@@ -145,7 +145,7 @@ const HeroSection = () => {
       <div className="bg-cover bg-center h-screen text-center"
         style={{ backgroundImage: `url(${Background.src})` }}>
         
-        <div className="flex justify-start items-center h-screen left-10">
+        <div className="flex justify-center items-center h-screen left-10">
           <div className="hero-content">
             <h1 className="text-4xl font-bold text-center text-white ml-10">
               Photography is the art of capturing moments <br /> that tell stories without words.
@@ -165,16 +165,6 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <section className="bg-gray-100 py-16">
-          <div className="container mx-auto px-4 text-center mb-12 hero-content">
-            <h2 className="text-3xl font-bold text-black mb-4">Our Top Photographers</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our team consists of some of the most talented and renowned photographers in the industry.
-              Each of them brings a unique and creative perspective, capturing the most beautiful and special moments.
-              Explore some of their best work and discover the passion and creativity behind every photograph.
-            </p>
-          </div>
-        </section>
       </div>
     </>
   );
