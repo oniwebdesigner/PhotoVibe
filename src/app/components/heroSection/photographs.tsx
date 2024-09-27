@@ -6,26 +6,30 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Photographs() {
-  const textRefs = useRef([]);
+  // Deklarimi i ref me tip HTMLHeadingElement ose null
+  const textRefs = useRef<(HTMLHeadingElement | null)[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       textRefs.current.forEach((el, index) => {
-        gsap.from(el, {
-          x: index % 2 === 0 ? -200 : 200, // Vjen nga e majta nëse index-i është çift, përndryshe nga e djathta
-          opacity: 0,
-          duration: 1,
-          scrollTrigger: {
-            trigger: el,
-            start: "top 90%", 
-            end: "bottom 10%", 
-            scrub: true, 
-          },
-        });
+        if (el) {
+          gsap.from(el, {
+            x: index % 2 === 0 ? -200 : 200, // Lëvizje horizontale (majtas apo djathtas)
+            y: -100, // Lëvizje vertikale (nga lart poshtë)
+            opacity: 0,
+            duration: 1,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 90%",
+              end: "bottom 10%",
+              scrub: true,
+            },
+          });
+        }
       });
-    }, textRefs); 
+    });
 
-    return () => ctx.revert(); 
+    return () => ctx.revert();
   }, []);
 
   return (
