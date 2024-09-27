@@ -35,7 +35,7 @@ export default function GridPhotographers() {
   // Fotot dhe përshkrimet që do të shfaqen
   const photos = [
     {
-      src: "https://madebydesignesia.com/themes/photix/images/album/4.jpg",
+      src: "https://madebydesignesia.com/themes/photix/images/album/3.jpg",
       description: "Photographer 1: Capturing Timeless Moments"
     },
     {
@@ -43,7 +43,7 @@ export default function GridPhotographers() {
       description: "Photographer 2: A Vision Through the Lens"
     },
     {
-      src: "https://madebydesignesia.com/themes/photix/images/album/4.jpg",
+      src: "https://madebydesignesia.com/themes/photix/images/album/3.jpg",
       description: "Photographer 3: Creating Stories with Every Shot"
     },
     {

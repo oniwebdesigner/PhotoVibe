@@ -18,7 +18,7 @@ const Background: React.FC = () => {
     // Animimi i skrollimit në seksionin e dëshiruar
     gsap.to(window, {
       duration: 1,
-      scrollTo: { y: "#section2", offsetY: 70 },
+      scrollTo: { y: "#wrapper", offsetY: 70 },
       ease: "power2.out",
     });
   };
