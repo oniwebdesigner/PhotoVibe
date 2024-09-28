@@ -15,6 +15,9 @@ const config: Config = {
         500: "#00C165",
         600:'#16a34a',
       },
+      yellow: {
+        200 : '#ffff00' ,
+      },
       red: {
         500: "#ef4444",
       },
