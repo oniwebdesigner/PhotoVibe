@@ -69,7 +69,7 @@ export default function GridPhotographers() {
   ];
 
   return (
-    <div className="bg-gray-700 py-10">
+    <div className="bg-gradient-to-br from-[#7838e0] to-[#3f2b77] font-sans py-10">
       <h1 className="text-white text-4xl text-center font-bold mb-8">Our Top Photographers</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8 px-4 max-h-screen overflow-y-auto">
         {photos.map((photo, index) => (
