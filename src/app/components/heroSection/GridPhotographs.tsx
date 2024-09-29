@@ -62,49 +62,49 @@ export default function GridPhotographers() {
   const photos = [
     {
       src: "https://madebydesignesia.com/themes/photix/images/album/3.jpg",
-      description: "Photographer 1: Capturing Timeless Moments. This photographer specializes in wedding photography, ensuring that every moment is preserved beautifully. Their style blends candid shots with posed portraits, allowing couples to relive their special day through stunning imagery.",
+      description: "Photographer 1: Capturing Timeless Moments. This photographer specializes in wedding photography, ensuring that every moment is preserved beautifully.",
       bgGradient: "bg-gradient-to-r from-[#3B82F6] to-[#60A5FA]"
     },
     {
       src: "https://madebydesignesia.com/themes/photix/images/album/4.jpg",
-      description: "Photographer 2: A Vision Through the Lens. Known for their breathtaking landscape photography, this artist captures the essence of nature in its purest form. With a keen eye for detail and a love for adventure, their portfolio showcases diverse locations across the globe.",
+      description: "Photographer 2: A Vision Through the Lens. Known for their breathtaking landscape photography, this artist captures the essence of nature in its purest form.",
       bgGradient: "bg-gradient-to-r from-[#1D4ED8] to-[#3B82F6]"
     },
     {
       src: "https://madebydesignesia.com/themes/photix/images/album/3.jpg",
-      description: "Photographer 3: Creating Stories with Every Shot. Specializing in portrait photography, they focus on capturing the personality and essence of each individual. Their approach is relaxed and natural, making the experience enjoyable for everyone involved.",
+      description: "Photographer 3: Creating Stories with Every Shot. Specializing in portrait photography, they focus on capturing the personality and essence of each individual.",
       bgGradient: "bg-gradient-to-r from-[#3B82F6] to-[#60A5FA]"
     },
     {
       src: "https://madebydesignesia.com/themes/photix/images/album/4.jpg",
-      description: "Photographer 4: Exploring the Art of Photography. This photographer blends art with storytelling, creating images that evoke emotions and tell a story. They experiment with various techniques and styles to produce unique and thought-provoking art.",
+      description: "Photographer 4: Exploring the Art of Photography. This photographer blends art with storytelling, creating images that evoke emotions and tell a story.",
       bgGradient: "bg-gradient-to-r from-[#1D4ED8] to-[#3B82F6]"
     },
     {
       src: "https://madebydesignesia.com/themes/photix/images/album/4.jpg",
-      description: "Photographer 5: Bringing Emotions to Life. Their work focuses on capturing genuine emotions, making every image a true reflection of the moment. They have a talent for finding beauty in everyday life, creating relatable and heartfelt photographs.",
+      description: "Photographer 5: Bringing Emotions to Life. Their work focuses on capturing genuine emotions, making every image a true reflection of the moment.",
       bgGradient: "bg-gradient-to-r from-[#3B82F6] to-[#60A5FA]"
     },
     {
       src: "https://madebydesignesia.com/themes/photix/images/album/4.jpg",
-      description: "Photographer 6: Light and Shadow Mastery. With a strong understanding of light and composition, this photographer creates stunning images that play with shadows and highlights. Their technical skills combined with creativity result in captivating visuals.",
+      description: "Photographer 6: Light and Shadow Mastery. With a strong understanding of light and composition, this photographer creates stunning images that play with shadows and highlights.",
       bgGradient: "bg-gradient-to-r from-[#1D4ED8] to-[#3B82F6]"
     },
     {
       src: "https://madebydesignesia.com/themes/photix/images/album/4.jpg",
-      description: "Photographer 7: Capturing Raw Beauty. Their focus is on natural beauty and authenticity, often shooting in natural light to enhance the subject's features. This photographer celebrates diversity and individuality in their work.",
+      description: "Photographer 7: Capturing Raw Beauty. Their focus is on natural beauty and authenticity, often shooting in natural light to enhance the subject's features.",
       bgGradient: "bg-gradient-to-r from-[#3B82F6] to-[#60A5FA]"
     },
     {
       src: "https://madebydesignesia.com/themes/photix/images/album/4.jpg",
-      description: "Photographer 8: Moments in Time. Specializing in documentary-style photography, this artist captures life's fleeting moments with a storytelling approach. Their ability to observe and capture real-life events makes their portfolio rich and diverse.",
+      description: "Photographer 8: Moments in Time. Specializing in documentary-style photography, this artist captures life's fleeting moments with a storytelling approach.",
       bgGradient: "bg-gradient-to-r from-[#1D4ED8] to-[#3B82F6]"
     },
   ];
 
   return (
     <div className="bg-gradient-to-br from-[#7838e0] to-[#3f2b77] font-sans py-10">
-      <h1 ref={titleRef} className="text-white text-4xl text-center font-bold mb-14">Our Top Photographers</h1>
+      <h1 ref={titleRef} className="text-white text-4xl text-center font-bold mb-28">Our Top Photographers</h1>
       <div className="flex flex-col items-center">
         {photos.map((photo, index) => (
           <div
