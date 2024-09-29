@@ -8,6 +8,7 @@ import GridPhotographers from '@components/heroSection/GridPhotographs'
 
 
 
+
 export default function Home() {
   return (
     <div>
