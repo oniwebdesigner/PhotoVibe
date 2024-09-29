@@ -11,7 +11,7 @@ export default function page() {
     <div>
         <Background></Background>
         <Text></Text>
-        <CameraWithFlash></CameraWithFlash>
+       
        <Grid></Grid>
         <Footer></Footer>
         
