@@ -31,7 +31,7 @@ export default function Photographs() {
         }
       });
 
-      // Lëvizja e lules përgjatë path-it që formon kamerën
+      // Flower movement along the path forming the camera, but starts only when scrolled to the path
       gsap.to(flowerRef.current, {
         duration: 8,
         repeat: -1,
@@ -42,6 +42,10 @@ export default function Photographs() {
           autoRotate: true,
           alignOrigin: [0.5, 0.5],
         },
+        scrollTrigger: {
+          trigger: pathRef.current, // Animation starts when the path becomes visible
+          start: "top 80%", // Can adjust to control the exact start point
+        },
       });
     });
 
@@ -50,7 +54,7 @@ export default function Photographs() {
 
   return (
     <div className="relative bg-gradient-to-br from-[#804dd2] to-[#5838af] font-sans py-10 flex flex-col items-center justify-center">
-      <h1 ref={(el) => (textRefs.current[0] = el)} className='text-green-600 text-4xl font-bold mb-20'>
+      <h1 ref={(el) => (textRefs.current[0] = el)} className='text-white text-4xl text-center font-bold mb-28'>
         Photographs
       </h1>
 
@@ -68,7 +72,7 @@ export default function Photographs() {
         Explore the art of photography through the eyes of our talented photographers. Below, you will find a gallery showcasing their exceptional work, capturing moments that resonate with every viewer.
       </p>
 
-      {/* SVG që përmban path që formon një kamerë dhe një formë 8 të verdhë */}
+      {/* SVG containing the path forming a camera and a yellow figure-8 */}
       <svg
         width="400"
         height="400"
@@ -77,7 +81,7 @@ export default function Photographs() {
         xmlns="http://www.w3.org/2000/svg"
         className="mt-10"
       >
-        {/* Path që formon një kamerë */}
+        {/* Path forming a camera */}
         <path
           ref={pathRef}
           d="M 100 150 L 300 150 Q 320 150, 320 170 L 320 250 Q 320 270, 300 270 L 100 270 Q 80 270, 80 250 L 80 170 Q 80 150, 100 150 
@@ -87,7 +91,7 @@ export default function Photographs() {
           strokeWidth="3"
           fill="transparent"
         />
-        {/* Path për formën 8 me ngjyrë të verdhë brenda kamerës */}
+        {/* Path for the yellow figure-8 inside the camera */}
         <path
           d="M 140 170 A 30 30 0 1 1 200 170 A 30 30 0 1 1 140 170"
           stroke="#FFD700"
@@ -95,9 +99,9 @@ export default function Photographs() {
           fill="transparent"
         />
         
-        {/* Figura lule që lëviz mbi path */}
+        {/* Flower figure that moves along the path */}
         <g ref={flowerRef} transform="translate(100, 150)">
-          {/* Petalet e lules */}
+          {/* Flower petals */}
           <circle cx="0" cy="-20" r="10" fill="#FF69B4" />
           <circle cx="-20" cy="0" r="10" fill="#FF69B4" />
           <circle cx="20" cy="0" r="10" fill="#FF69B4" />
@@ -107,7 +111,7 @@ export default function Photographs() {
           <circle cx="-14" cy="14" r="10" fill="#FF69B4" />
           <circle cx="14" cy="14" r="10" fill="#FF69B4" />
           
-          {/* Qendra e lules */}
+          {/* Center of the flower */}
           <circle cx="0" cy="0" r="10" fill="#FFD700" />
         </g>
       </svg>

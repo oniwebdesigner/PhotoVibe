@@ -1,14 +1,14 @@
-"use client"; 
+"use client";
 
 import { useEffect } from "react";
 import Background from '../image/background1.jpg';
-import { scrollAnimation } from "../heroSection/scrollAnimation"; 
+import { scrollAnimation } from "../heroSection/scrollAnimation";
 import gsap from "gsap";
 
 const HeroSection = () => {
 
   useEffect(() => {
-    scrollAnimation(); 
+    scrollAnimation();
     const tl = gsap.timeline();
 
     // Set the initial position for all hero-content
@@ -25,15 +25,15 @@ const HeroSection = () => {
 
     // Function to create various shapes on hover
     const title = document.querySelector("h1");
-    
+
     const hoverAnimation = (e) => {
       const randomShape = document.createElement("div");
       const shapes = ["circle", "square", "triangle", "star"];
       const shape = shapes[Math.floor(Math.random() * shapes.length)];
-      
+
       // Add class based on the shape
       randomShape.classList.add(shape);
-      
+
       // Initial styling for shapes
       gsap.set(randomShape, {
         position: "absolute",
@@ -42,11 +42,11 @@ const HeroSection = () => {
         width: "20px", // Set the width of the shape
         height: "20px", // Set the height of the shape
         opacity: 0, // Start with zero opacity
-        backgroundColor: `rgba(${Math.floor(Math.random() * 255)}, 
-                                ${Math.floor(Math.random() * 255)}, 
+        backgroundColor: `rgba(${Math.floor(Math.random() * 255)},
+                                ${Math.floor(Math.random() * 255)},
                                 ${Math.floor(Math.random() * 255)}, 0.8)`, // Random color
         borderRadius: shape === "circle" ? "50%" : "0", // Circle or square
-        clipPath: shape === "triangle" 
+        clipPath: shape === "triangle"
           ? "polygon(50% 0%, 0% 100%, 100% 100%)" // Triangle shape
           : shape === "star"
           ? "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)" // Star shape
@@ -54,7 +54,7 @@ const HeroSection = () => {
       });
 
       document.body.appendChild(randomShape);
-      
+
       // Animation for shape appearance and movement
       gsap.to(randomShape, {
         duration: 1,
@@ -144,7 +144,7 @@ const HeroSection = () => {
     <>
       <div className="bg-cover bg-center h-screen text-center"
         style={{ backgroundImage: `url(${Background.src})` }}>
-        
+
         <div className="flex justify-center items-center h-screen left-10">
           <div className="hero-content">
             <h1 className="text-4xl font-bold text-center text-white ml-10">
@@ -164,10 +164,10 @@ const HeroSection = () => {
             </a>
           </div>
         </div>
-
       </div>
     </>
   );
-}
+};
 
 export default HeroSection;
+

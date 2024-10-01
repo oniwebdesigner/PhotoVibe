@@ -1,4 +1,6 @@
-// components/AnimatedSections.tsx
+
+/*
+components/AnimatedSections.tsx
 'use client';
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
@@ -108,3 +110,4 @@ export default function AnimatedSections() {
     </div>
   );
 }
+*/
