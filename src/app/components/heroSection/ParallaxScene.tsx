@@ -106,8 +106,8 @@ const ParallaxScene = () => {
           </main>
         </div>
 
-        {/* Overlay-i me ngjyrë të errët */}
-        <div className="absolute inset-0 bg-black opacity-50"></div> {/* Rregullo opacity për errësirë më të madhe ose më të vogël */}
+        {/* Overlay-i me ngjyrë të errët, më i theksuar */}
+        <div className="absolute inset-0 bg-black opacity-70"></div> {/* Rregullo opacity për errësirë më të madhe ose më të vogël */}
       </div>
       <div className="h-screen w-full"></div> {/* Divi për skrollim */}
     </section>
